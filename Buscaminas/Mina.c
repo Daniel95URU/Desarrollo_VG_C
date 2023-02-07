@@ -5,7 +5,7 @@
 #include <time.h>
 #include <locale.h>
 #include <unistd.h>
-#define Terreno 6
+#define Terreno 11
 
 char tablero_comp[Terreno][Terreno];
 char terreno_del_juego[Terreno][Terreno];
@@ -32,7 +32,7 @@ int main ()
     Pantalla();
     sleep(2);
  	Beep(100, 1000);
- 	system("color 30");
+ 	system("color B0");
     printf("\t\t\t\t\t      Presiona ENTER para iniciar.");
     
 
@@ -56,7 +56,7 @@ void Tablero()
         for(j = 0; j < Terreno; j++)
             tablero_comp[i][j] = 'o';
  
-    Minas();			//FUNCIÓN QUE CREA LAS MINAS *Importante*
+    Minas();			//FUNCIÃ“N QUE CREA LAS MINAS *Importante*
 }
  
 
@@ -90,7 +90,7 @@ void Tablero_M()
     }
 }
  
-/* Creación de minas aleatorias */
+/* CreaciÃ³n de minas aleatorias */
 void Minas()
 {
     int i, random;
@@ -146,7 +146,6 @@ void Tablero_C()
     }
 }
  
-/* Toma la entrada del usuario/jugador*/
 int juego()
 {
     int seleccion_fila2 = 0, seleccion_columna2 = 0, 
@@ -156,8 +155,8 @@ int juego()
         minas_cercanas7 = 0, minas_cercanas8 = 0,
         i = 0;
  
-    //- Determina el número de fila seleccionada y luego procede a 
-    //-	Preguntar el número de columna (base)
+    //- Determina el nÃºmero de fila seleccionada y luego procede a 
+    //-	Preguntar el nÃºmero de columna (base)
     do {
     printf("\nSelecciona una casilla (Utiliza las coordenadas de los costados) \n");
     printf("Fila--> ");
@@ -166,7 +165,7 @@ int juego()
     scanf("%d", &seleccion_columna2);
      
     } while(seleccion_fila2 < 1 || seleccion_fila2 > Terreno || seleccion_columna2 < 1 || seleccion_fila2 > Terreno);
-    // ^ Determina si el usuario repitió jugada
+    // ^ Determina si el usuario repitiÃ³ jugada
  
     Minas_P(seleccion_fila2 - 1, seleccion_columna2 - 1);
  
@@ -180,10 +179,10 @@ int juego()
     terreno_del_juego[seleccion_fila2 - 1][seleccion_columna2 - 1] = (char)( ((int)'0') + minas_cercanas );
  
     /*--------------------------------------------------
-     La siguiente lista pretender determinar las minas aledañas	
+     La siguiente lista pretender determinar las minas aledaÃ±as	
      para ello se estima el ciclo y las casillas descubiertas (0)	
      una vez el programa detecta que casillas tienen minas		
-     Asigna el digito de minas aledañas en las direcciones		
+     Asigna el digito de minas aledaÃ±as en las direcciones		
      arriba, abajo, izq, der, y sus diagonales (NE, SO, etc...)	
     */
     if(minas_cercanas == 0)
@@ -323,7 +322,7 @@ void Minas_P(int seleccion_fila, int seleccion_colum)
 {
     if(tablero_comp[seleccion_fila][seleccion_colum] == '*')
     {
-        printf("\nBOOM! pisaste una mina por si no quedó claro.\n");
+        printf("\nBOOM! pisaste una mina por si no quedÃ³ claro.\n");
         getchar(); getchar();
         pierdes = 1;
     }
@@ -430,7 +429,7 @@ void otra_vez()
 {
     char res;
  
-    printf("\n\n¿Volver a jugar? (y/n) --> ");
+    printf("\n\nÂ¿Volver a jugar? (y/n) --> ");
     scanf(" %c", &res);
  
     if(toupper(res) == 'Y')
